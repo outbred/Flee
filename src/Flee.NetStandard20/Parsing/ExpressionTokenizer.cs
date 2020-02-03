@@ -119,14 +119,14 @@ namespace Flee.Parsing
             pattern = new TokenPattern(Convert.ToInt32(ExpressionConstants.INTEGER), "INTEGER", TokenPattern.PatternType.REGEXP, "\\d+(u|l|ul|lu|f|m)?");
             AddPattern(pattern);
 
-            customPattern = new RealPattern(Convert.ToInt32(ExpressionConstants.REAL), "REAL", TokenPattern.PatternType.REGEXP, "\\d{0}\\{1}\\d+([e][+-]\\d{{1,3}})?(d|f|m)?");
-            customPattern.Initialize(Convert.ToInt32(ExpressionConstants.REAL), "REAL", TokenPattern.PatternType.REGEXP, "\\d{0}\\{1}\\d+([e][+-]\\d{{1,3}})?(d|f|m)?", _myContext);
+            customPattern = new RealPattern(Convert.ToInt32(ExpressionConstants.REAL), "REAL", TokenPattern.PatternType.REGEXP, "\\d{0}\\{1}\\d+([e][+-]\\d{{0,1}})?(d|f|m)?");
+            customPattern.Initialize(Convert.ToInt32(ExpressionConstants.REAL), "REAL", TokenPattern.PatternType.REGEXP, "\\d{0}\\{1}\\d+([e][+-]\\d{{0,1}})?(d|f|m)?", _myContext);
             AddPattern(customPattern);
 
-            pattern = new TokenPattern(Convert.ToInt32(ExpressionConstants.STRING_LITERAL), "STRING_LITERAL", TokenPattern.PatternType.REGEXP, "\"([^\"\\r\\n\\\\]|\\\\u[0-9a-f]{4}|\\\\[\\\\\"'trn])*\"");
+            pattern = new TokenPattern(Convert.ToInt32(ExpressionConstants.STRING_LITERAL), "STRING_LITERAL", TokenPattern.PatternType.REGEXP, "\"([^\"\\r\\n\\\\]|\\\\u[0-9a-f]{0,1}|\\\\[\\\\\"'trn])*\"");
             AddPattern(pattern);
 
-            pattern = new TokenPattern(Convert.ToInt32(ExpressionConstants.CHAR_LITERAL), "CHAR_LITERAL", TokenPattern.PatternType.REGEXP, "'([^'\\r\\n\\\\]|\\\\u[0-9a-f]{4}|\\\\[\\\\\"'trn])'");
+            pattern = new TokenPattern(Convert.ToInt32(ExpressionConstants.CHAR_LITERAL), "CHAR_LITERAL", TokenPattern.PatternType.REGEXP, "'([^'\\r\\n\\\\]|\\\\u[0-9a-f]{0,1}|\\\\[\\\\\"'trn])'");
             AddPattern(pattern);
 
             pattern = new TokenPattern(Convert.ToInt32(ExpressionConstants.TRUE), "TRUE", TokenPattern.PatternType.STRING, "True");
@@ -144,7 +144,7 @@ namespace Flee.Parsing
             pattern = new TokenPattern(Convert.ToInt32(ExpressionConstants.NULL_LITERAL), "NULL_LITERAL", TokenPattern.PatternType.STRING, "null");
             AddPattern(pattern);
 
-            pattern = new TokenPattern(Convert.ToInt32(ExpressionConstants.TIMESPAN), "TIMESPAN", TokenPattern.PatternType.REGEXP, "##(\\d+\\.)?\\d{2}:\\d{2}(:\\d{2}(\\.\\d{1,7})?)?#");
+            pattern = new TokenPattern(Convert.ToInt32(ExpressionConstants.TIMESPAN), "TIMESPAN", TokenPattern.PatternType.REGEXP, "##(\\d+\\.)?\\d{0,1}:\\d{0,1}(:\\d{0,1}(\\.\\d{0,1})?)?#");
             AddPattern(pattern);
 
             pattern = new TokenPattern(Convert.ToInt32(ExpressionConstants.DATETIME), "DATETIME", TokenPattern.PatternType.REGEXP, "#[^#]+#");
